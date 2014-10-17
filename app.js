@@ -1,12 +1,10 @@
 'use strict';
-
 /**
  * AWDG
  *
  * @copyright Atlanta Web Design Group 2014
  *
  */
-
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
@@ -34,8 +32,8 @@ app.use(bodyParser.urlencoded({
 app.use(express.static(path.join(__dirname, 'public')));
 
 // use the routes
-// app.use('/', events );
-app.use('/', members );
+// app.use('/api', events );
+app.use('/api', members );
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
