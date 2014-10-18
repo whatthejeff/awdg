@@ -1,4 +1,5 @@
 'use strict';
+
 /**
  * AWDG
  *
@@ -11,14 +12,18 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 var util = require('util');
-var _ = require('lodash');
-var root = path.normalize(__dirname);
-var env = process.env.NODE_ENV || 'development';
+var config = require('./config/env');
 var app = express();
+
+app.set('config',config);
+// console.log(config);
+
 
 // routes
 // var events = require(root+'/api/events/routes');
-var members = require(root+'/api/members/routes');
+// var members = require(root+'/api/members/routes');
+
+// load mongoose
 
 
 app.use(logger('dev'));
@@ -33,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // use the routes
 // app.use('/api', events );
-app.use('/api', members );
+// app.use('/api', members );
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
