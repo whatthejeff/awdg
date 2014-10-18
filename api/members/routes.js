@@ -19,14 +19,14 @@ var _ = require('lodash');
  * Fetch all members
  */
 router.get('/api/members', function(req, res, next) {
-    // var $member_id = req.params.id;
 
-    // Member.findOne({
-    //     id: $member_id
-    // }, function(err, member) {
-    //     if (err) return handleError(err);
-    res.send('boom');
-    // })
+    Member.find().exec(fetchMembers);
+
+    function fetchMembers(err, members) {
+        res.send({
+            members: members
+        });
+    }
 
 })
 
@@ -37,20 +37,20 @@ router.post('/api/members', function(req, res, next) {
 
     var payload = req.body;
 
-    // check if the member exists
     Member.findOne({
         email: payload.email
-    }, function(err, member) {
+    }).exec(fetchMemberByEmail);
+
+    function fetchMemberByEmail(err, member) {
         if (err) return console.log(err);
         if (!_.isNull(member)) {
             res.status(409).send({
                 error: 'Member already exists'
             });
         }
-    });
+    }
 
     var member = new Member(payload);
-
     var roster = new Roster({
         member: {
             _id: member._id,
@@ -68,6 +68,8 @@ router.post('/api/members', function(req, res, next) {
         res.send(member);
     });
 
+
+
 });
 
 
@@ -75,19 +77,16 @@ router.post('/api/members', function(req, res, next) {
  * Find a Member by Id
  */
 router.get('/api/members/:id', function(req, res, next) {
-    var $member_id = req.params.id;
-
-    // Member.findOne({
-    //     _id: $member_id
-    // }, function(err, member) {
-    //     if (err) return function(err){
-    //         console.log(err);
-    //     }
-    console.log(Member);
-    res.send({
-        member: Member
+    var member_id = req.params.id;
+    Member.findOne({
+        _id: member_id
+    }, function(err, member) {
+        if (err) return console.log(err);
+        if (_.isNull(member)) {
+            res.status(404).send();
+        }
+        res.send(member);
     });
-    // })
 
 })
 
