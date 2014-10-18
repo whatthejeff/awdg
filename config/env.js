@@ -32,7 +32,7 @@ var config = {
     port: process.env.PORT || 3000,
     root: path.normalize(__dirname + '../..'),
     database: {
-        uri: process.env.DATABASE_URL,
+        uri: process.env.DATABASE_URI,
         options: {
             replset: {
                 rs_name: process.env.DATABASE_REPLICA_SET

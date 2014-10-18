@@ -17,12 +17,10 @@ var Member = new Schema({
     name: {
         first: {
             type: String,
-            default: '',
             required: true
         },
         last: {
             type: String,
-            default: '',
             required: true
         }
     },
@@ -34,10 +32,9 @@ var Member = new Schema({
             unique: true
         }
     },
-    auth: {
+    password: {
         type: String,
         required: true,
-        default: 'local'
     },
     profile: {
         avatar: {
@@ -49,8 +46,8 @@ var Member = new Schema({
             work: String
         },
         social: {
-            type: Array,
-            default: []
+            type: Schema.Types.Mixed,
+            default: {}
         },
         bio: {
             type: String,
@@ -60,13 +57,9 @@ var Member = new Schema({
             type: Boolean,
             default: false
         }
-    },
-    _calender: {
-        type: String,
-        required: true
     }
 }, {
-    collection: 'Members'
+    collection: 'members'
 });
 
 
@@ -77,9 +70,7 @@ var Member = new Schema({
  */
 Member.pre('save', function(next) {
     var member = this;
-
     if (!member.isModified('password')) return next();
-
     bcrypt.genSalt(10, function(err, salt) {
         if (err) return next(err);
 
@@ -89,6 +80,8 @@ Member.pre('save', function(next) {
             next();
         });
     });
+
+
 });
 
 /**
@@ -117,7 +110,6 @@ Member.methods = {
 Member.set('toJSON', {
     transform: function(doc, ret, options) {
         delete ret.password;
-        delete ret.auth;
         return ret;
     }
 });
