@@ -17,17 +17,6 @@ var mongoose = require('mongoose');
 
 var config = require('./config/env');
 var app = express();
-
-// load mongoose
-require(config.root + '/config/mongoose')(mongoose);
-
-// routes
-var members = require(config.root + '/api/members/routes');
-
-
-// var events = require(root+'/api/events/routes');
-// app.use('/api', events );
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -36,11 +25,25 @@ app.use(bodyParser.urlencoded({
 
 
 
-// app.use(express.static(path.join(__dirname, 'public')));
+/**
+ * Database
+ * Load the mongoose instance
+ */
+require(config.root + '/config/mongoose')(mongoose);
+
+/**
+ * Routes
+ */
+// var events = require(root+'/api/events/routes');
+// app.use('/api', events );
+var members = require(config.root + '/api/members/routes');
 app.use('/', members);
 
 
-// catch 404 and forward to error handler
+/**
+ * 404 Errors
+ * Catch Not found errors and forward them to the error handler
+ */
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
@@ -49,8 +52,8 @@ app.use(function(req, res, next) {
 
 
 /**
- * error handler
- * stacktrace printed on development
+ * Error Handler
+ * This will print the stacktrace on development only
  */
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);

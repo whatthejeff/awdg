@@ -19,6 +19,7 @@ var config = require('./env');
 require(config.root + '/lib/models/Member');
 require(config.root + '/lib/models/Roster');
 
-module.exports = function(mongoose) {
+module.exports = function(mongoose){
+
     mongoose.connect(config.database.uri);
 };
