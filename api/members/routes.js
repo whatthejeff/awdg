@@ -15,93 +15,38 @@ var Member = mongoose.model('Member');
 var Roster = mongoose.model('Roster');
 var _ = require('lodash');
 
-/**
- * Fetch all members
- */
-router.get('/api/members', function(req, res, next) {
-
-    Member.find().exec(fetchMembers);
-
-    function fetchMembers(err, members) {
-        res.send({
-            members: members
-        });
-    }
-
-})
-
-/**
- * Create a Member
- */
-router.post('/api/members', function(req, res, next) {
-
-    var payload = req.body;
-
-    Member.findOne({
-        email: payload.email
-    }).exec(fetchMemberByEmail);
-
-    function fetchMemberByEmail(err, member) {
-        if (err) return console.log(err);
-        if (!_.isNull(member)) {
-            res.status(409).send({
-                error: 'Member already exists'
-            });
-        }
-    }
-
-    var member = new Member(payload);
-    var roster = new Roster({
-        member: {
-            _id: member._id,
-            email: member.email
-        }
-    });
-
-    roster.save(function(err, roster) {
-        if (err) return console.log(err);
-    });
-
-
-    member.save(function(err, member) {
-        if (err) return console.log(err);
-        res.send(member);
-    });
-
-
-
-});
+var getMembers = require('./getMembers');
+var getMemberById = require('./getMemberById');
+var createMember = require('./createMember');
+// var updateMember = require('./updateMember');
+// var deleteMember = require('./deleteMember');
 
 
 /**
- * Find a Member by Id
+ * Get Members
  */
-router.get('/api/members/:id', function(req, res, next) {
-    var member_id = req.params.id;
-    Member.findOne({
-        _id: member_id
-    }, function(err, member) {
-        if (err) return console.log(err);
-        if (_.isNull(member)) {
-            res.status(404).send();
-        }
-        res.send(member);
-    });
+router.get('/api/members', getMembers);
 
-})
+/**
+ * Get a Member by Id
+ */
+router.get('/api/members/:id', getMemberById);
+
+
+/**
+ * Create Member
+ */
+router.post('/api/members', createMember);
+
 
 /**
  * Update a Member
  */
-router.put('/api/members/:id', function(req, res, next) {
-
-})
+// router.put('/api/members/:id', updateMember)
 
 /**
  * Delete a Member
  */
-router.delete('/api/members/:id', function(req, res, next) {
-
-});
+// router.delete('/api/members/:id', deleteMember);
 
 module.exports = router;

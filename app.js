@@ -6,6 +6,7 @@
  * @copyright Atlanta Web Design Group 2014
  *
  */
+
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
@@ -16,17 +17,6 @@ var mongoose = require('mongoose');
 
 var config = require('./config/env');
 var app = express();
-
-// load database
-require(config.root + '/config/mongoose')(mongoose);
-
-// routes
-// var events = require(root+'/api/events/routes');
-var members = require(config.root+'/api/members/routes');
-
-// load mongoose
-
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -35,13 +25,25 @@ app.use(bodyParser.urlencoded({
 
 
 
-app.use(express.static(path.join(__dirname, 'public')));
+/**
+ * Database
+ * Load the mongoose instance
+ */
+require(config.root + '/config/mongoose')(mongoose);
 
-// use the routes
+/**
+ * Routes
+ */
+// var events = require(root+'/api/events/routes');
 // app.use('/api', events );
-app.use('/', members );
+var members = require(config.root + '/api/members/routes');
+app.use('/', members);
 
-// catch 404 and forward to error handler
+
+/**
+ * 404 Errors
+ * Catch Not found errors and forward them to the error handler
+ */
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
@@ -49,26 +51,15 @@ app.use(function(req, res, next) {
 });
 
 
-// development error handler
-// will print stacktrace
-// if (app.get('env') === 'development') {
-//     app.use(function(err, req, res, next) {
-//         console.log(err.status);
-//         res.status(err.status || 500);
-//         res.send('error/' + err.status, {
-//             message: err.message,
-//             error: err
-//         });
-//     });
-// }
-
-// production error handler
-// no stacktraces leaked to user
+/**
+ * Error Handler
+ * This will print the stacktrace on development only
+ */
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.send( {
+    res.send({
         message: err.message,
-        error: {}
+        error:(config.env == 'development')?err :{}
     });
 });
 
