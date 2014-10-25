@@ -1,0 +1,12 @@
+{% include "layouts/header.html" %}
+<div class="container {{ module }}">
+    <div class="row">
+        <div class="col-md-9" role="content">
+            {% block main %}{% endblock %}
+        </div>
+        <aside class="col-md-3 sidebar" role="sidebar">
+            {% block sidebar %}{% endblock %}
+        </aside>
+    </div>
+</div>
+{% include "layouts/footer.html" %}
