@@ -1,7 +1,10 @@
+.sass-cache/
 .DS_Store
 node_modules/
+bower_components/*
 *-workspace
 *-project
+**/.build/
 **/*.cache
 **/*.log
 .env
