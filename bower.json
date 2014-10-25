@@ -1,0 +1,23 @@
+{
+  "name": "awdg",
+  "version": "0.1.0",
+  "homepage": "https://github.com/AWDG/awdg",
+  "authors": [],
+  "description": "Official home of the Atlanta Web Design Group",
+  "main": "app.js",
+  "keywords": [
+    "AWDG"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "~3.0.2",
+    "font-awesome": "~4.2.0",
+    "lodash": "~2.4.1"
+  }
+}
