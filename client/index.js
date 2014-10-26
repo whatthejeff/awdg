@@ -59,6 +59,8 @@ module.exports = function(app) {
     /**
      * Client Routes
      */
-    require('./handlers/events')(app, passport)
-    require('./handlers/home')(app, passport);
+    require('./routes/home')(app, passport);
+    require('./routes/events')(app, passport);
+    require('./routes/members')(app, passport);
+
 }
