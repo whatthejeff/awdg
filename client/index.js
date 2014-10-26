@@ -13,6 +13,7 @@ var fs = require('fs');
 var passport = require('passport');
 var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
+var session  = require('cookie-session');
 var bodyParser = require('body-parser');
 var swig = require('swig');
 var config = require('../config');
@@ -24,7 +25,9 @@ module.exports = function(app) {
      * Setup Passport
      */
     require(config.root + '/config/passport')(passport);
-
+    app.use(session(config.session));
+    app.use(passport.initialize());
+    app.use(passport.session());
 
     /**
      * Express Settings
@@ -53,9 +56,9 @@ module.exports = function(app) {
         app.set('view cache', false);
     }
 
-
     /**
      * Client Routes
      */
-     app.use('/', require('./routes/home'));
+    require('./handlers/events')(app, passport)
+    require('./handlers/home')(app, passport);
 }
