@@ -1,10 +1,12 @@
-/**
- * AWDG
- *
- * Main Theme Stylesheet
- */
+// awdg
 
 @import "libs";
+.container{
+    margin-bottom:5px;
+    border: 1px solid #ccc;
+    background-color: #efefef;
+
+}
 .events {
     .list{
         .list-item{
@@ -13,9 +15,9 @@
     }
 }
 .home{
-      .list{
-        .list-item{
-            border: 1px solid #efefef;
-        }
+  .events-list{
+    .list-item{
+        border: 1px solid #000;
     }
+}
 }
