@@ -1,12 +1,6 @@
 // awdg
 
 @import "libs";
-.container{
-    margin-bottom:5px;
-    border: 1px solid #ccc;
-    background-color: #efefef;
-
-}
 .events {
     .list{
         .list-item{
@@ -15,9 +9,14 @@
     }
 }
 .home{
-  .events-list{
-    .list-item{
-        border: 1px solid #000;
+    .events-list{
+        .list-item{
+            border: 1px solid #000;
+        }
     }
 }
+.narrow {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
 }

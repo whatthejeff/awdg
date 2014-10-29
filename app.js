@@ -17,6 +17,16 @@ var passport = require('passport');
 var config = require('./config');
 var app = express();
 
+/**
+ * Set the logger
+ */
+app.use(logger('dev'));
+
+/**
+ * Use Express Promises
+ */
+app.use(require('express-promise')());
+
 
 /**
  * Database
@@ -30,11 +40,6 @@ require(config.root + '/config/mongoose')(mongoose);
  */
 require(config.root + '/client')(app);
 
-
-/**
- * Set the logger
- */
-app.use(logger('dev'));
 
 
 /**
