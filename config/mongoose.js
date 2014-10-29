@@ -15,7 +15,9 @@ var config = require('../config');
 
 
 // load models
+require(config.root + '/lib/models/Event');
 require(config.root + '/lib/models/Member');
+require(config.root + '/lib/models/Roll');
 require(config.root + '/lib/models/Roster');
 
 module.exports = function(mongoose) {

@@ -5,9 +5,9 @@ module.exports = function(grunt) {
         dir: {
             publish: 'public',
             theme: 'client/theme',
-            build:'client/.build',
-            vendor:{
-                bower:'bower_components'
+            build: 'client/.build',
+            vendor: {
+                bower: 'bower_components'
             }
         },
 
@@ -91,7 +91,7 @@ module.exports = function(grunt) {
 
         // always clean up the build and publish dirs
         clean: {
-            build:['<%= dir.build %>/'],
+            build: ['<%= dir.build %>/'],
             publish: [
                 '<%= dir.publish %>/<%= pkg.name %>.min.css',
                 '<%= dir.publish %>/js',
@@ -127,9 +127,22 @@ module.exports = function(grunt) {
                 tasks: ['uglify:theme'],
             },
         },
+        nodemon: {
+            dev: {
+                script: './bin/www'
+            }
+        },
+        concurrent: {
+            dev: {
+                tasks: ['nodemon', 'watch'],
+                options: {
+                    logConcurrentOutput: true
+                }
+            }
+        },
 
     });
 
     grunt.registerTask('default', ['jshint', 'clean', 'sass', 'cssmin', 'uglify', 'copy']);
-    grunt.registerTask('develop', ['default', 'watch']);
+    grunt.registerTask('develop', ['default', 'concurrent:dev']);
 };
