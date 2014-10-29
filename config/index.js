@@ -29,8 +29,12 @@ var pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 var config = {
     name: pkg.name,
     env: process.env.NODE_ENV || 'development',
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 5000,
     root: path.normalize(__dirname + '../..'),
+    session: {
+        key: '_awdg',
+        secret: 'i<3th3W3b',
+    },
     database: {
         uri: process.env.DATABASE_URI,
         options: {

@@ -10,19 +10,22 @@
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
-var bodyParser = require('body-parser');
 var fs = require('fs');
 var util = require('util');
 var mongoose = require('mongoose');
-
-var config = require('./config/env');
+var passport = require('passport');
+var config = require('./config');
 var app = express();
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
 
+/**
+ * Set the logger
+ */
+app.use(logger('dev'));
+
+/**
+ * Use Express Promises
+ */
+app.use(require('express-promise')());
 
 
 /**
@@ -32,17 +35,16 @@ app.use(bodyParser.urlencoded({
 require(config.root + '/config/mongoose')(mongoose);
 
 /**
- * Routes
+ * Client
+ * Mount the client app
  */
-// var events = require(root+'/api/events/routes');
-// app.use('/api', events );
-var members = require(config.root + '/api/members/routes');
-app.use('/', members);
+require(config.root + '/client')(app);
+
 
 
 /**
  * 404 Errors
- * Catch Not found errors and forward them to the error handler
+ * Catch 404 errors and forward them to the error handler
  */
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
@@ -57,10 +59,8 @@ app.use(function(req, res, next) {
  */
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.send({
-        message: err.message,
-        error:(config.env == 'development')?err :{}
-    });
+    var error = (config.env == 'development') ? err : {};
+    res.render('error/' + err.status, error);
 });
 
 

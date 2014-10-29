@@ -11,15 +11,15 @@
  * Mongoose Config
  */
 var mongoose = require('mongoose');
-var config = require('./env');
+var config = require('../config');
 
 
 // load models
-// require(config.root + '/api/events/Event.model');
+require(config.root + '/lib/models/Event');
 require(config.root + '/lib/models/Member');
+require(config.root + '/lib/models/Roll');
 require(config.root + '/lib/models/Roster');
 
-module.exports = function(mongoose){
-
+module.exports = function(mongoose) {
     mongoose.connect(config.database.uri);
 };
