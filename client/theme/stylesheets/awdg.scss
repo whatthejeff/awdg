@@ -1,17 +1,22 @@
 // awdg
 
 @import "libs";
-.events {
-    .list{
-        .list-item{
-            border: 1px solid #efefef;
-        }
-    }
-}
+// .events {
+//     .list{
+//         .list-item{
+//             border: 1px solid red;
+//         }
+//     }
+// }
 .home{
     .events-list{
+        // padding: 20px 10px;
+        background: #efefef;
         .list-item{
-            border: 1px solid #000;
+            padding:20px;
+            margin: 10px 20px;
+            border: 1px solid #ccc;
+            background-color:#fff;
         }
     }
 }
