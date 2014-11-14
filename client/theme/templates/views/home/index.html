@@ -2,7 +2,9 @@
 {% block title %} Home {% endblock %}
 {% block main %}
 <div class="events-list">
-    {% include "views/events/list-item.html" %}
+    <div class="row">
+    {% include "views/events/featured-item.html" %}
+    </div>
 </div>
 {% endblock %}
 {% block sidebar %}
