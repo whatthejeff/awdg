@@ -31,10 +31,7 @@ module.exports = function(grunt) {
         // stylesheet processing
         // compile sass to build,
         sass: {
-            build: {
-                options: {
-                    style: 'expanded'
-                },
+            dist: {
                 files: {
                     '<%= dir.build %>/stylesheets/<%= pkg.name %>.css': '<%= dir.theme %>/stylesheets/<%= pkg.name %>.scss',
                 }
