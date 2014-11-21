@@ -6,11 +6,10 @@
 - Run initial build
 - Start app
      
-      git clone https://github.com/AWDG/awdg.git
-      npm install
-      bower install      
-      grunt 
-      npm start
+        npm install
+        bower install      
+        grunt 
+        npm start
  
  
 ##  Personalize your dev environment
