@@ -1,0 +1,12 @@
+{% extends "layouts/two-column.html" %}
+{% block title %} Locations {% endblock %}
+{% block main %}
+<div class="locations-list">
+    <div class="row">
+        {% include "views/locations/list-item.html" %}
+    </div>
+</div>
+{% endblock %}
+{% block sidebar %}
+<h2>Sidebar</h2>
+{% endblock %}
