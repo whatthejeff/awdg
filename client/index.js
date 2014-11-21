@@ -33,6 +33,7 @@ module.exports = function(app) {
      * Express Settings
      */
     app.use(cookieParser());
+    app.use(bodyParser.urlencoded({ extended: false }));
     app.use(express.static(config.root + '/public'));
 
 

@@ -16,8 +16,8 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap-sass": "~3.0.2",
     "font-awesome": "~4.2.0",
-    "lodash": "~2.4.1"
+    "lodash": "~2.4.1",
+    "bootstrap-sass-official": "~3.3.1"
   }
 }
