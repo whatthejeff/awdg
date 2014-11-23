@@ -63,5 +63,6 @@ module.exports = function(app) {
     require('./routes/home')(app, passport);
     require('./routes/events')(app, passport);
     require('./routes/members')(app, passport);
+    require('./routes/venues')(app, passport);
 
 }
