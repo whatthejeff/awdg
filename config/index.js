@@ -29,14 +29,14 @@ var pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 var config = {
     name: pkg.name,
     env: process.env.NODE_ENV || 'development',
-    port: process.env.PORT || 5000,
+    port: process.env.PORT || 2934,
     root: path.normalize(__dirname + '../..'),
     session: {
         key: '_awdg',
         secret: 'i<3th3W3b',
     },
     database: {
-        uri: process.env.DATABASE_URI,
+        uri: process.env.DATABASE_URI ||  'mongodb://dev:lId-Jer-wa-H@ds053300.mongolab.com:53300/awdg',
         options: {
             replset: {
                 rs_name: process.env.DATABASE_REPLICA_SET

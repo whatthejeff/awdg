@@ -18,14 +18,22 @@ module.exports = function(app, passport) {
 
     app.get('/venues', function(req, res, next) {
         res.render('venues/index', {
-            module: 'venues'
+            module: 'venue'
         });
     });
 
     app.get('/admin/venues', function(req, res, next) {
-        res.render('venues/index', {
-            module: 'venues'
+
+        Venue.find(function(err, venues) {
+            if (err) return next(err);
+            res.render('venues/admin-index', {
+                module: 'admin-venue',
+                venues:venues
+            });
         });
+
+
+
     });
 
     app.get('/admin/venues/create', function(req, res, next) {

@@ -10,7 +10,7 @@
 var mongoose = require('mongoose');
 var LocalStrategy = require('passport-local').Strategy;
 var Member = mongoose.model('Member');
-var config = require('../config');
+var config = require('../../config');
 
 /**
  * Passport Configuration

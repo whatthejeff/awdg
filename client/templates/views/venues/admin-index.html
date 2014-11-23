@@ -1,0 +1,12 @@
+{% extends "layouts/two-column.html" %}
+{% block title %}Venue{% endblock %}
+{% block main %}
+    <div class="venues-list">
+        {% for venue in venues %}
+            {% include "views/venues/list-item.html" %}
+        {% endfor %}
+    </div>
+{% endblock %}
+{% block sidebar %}
+    <h2>Sidebar</h2>
+{% endblock %}

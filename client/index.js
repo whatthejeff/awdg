@@ -40,13 +40,13 @@ module.exports = function(app) {
     /**
      * Setup rendering engine
      */
-    app.set('views', config.root + '/client/theme/templates/views');
+    app.set('views', config.root + '/client/templates/views');
     app.set('view engine', 'html');
 
     app.engine('html', swig.renderFile);
     swig.setDefaults({
         cache: false,
-        loader: swig.loaders.fs(config.root + '/client/theme/templates')
+        loader: swig.loaders.fs(config.root + '/client/templates')
     });
 
 

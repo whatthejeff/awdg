@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <base href="/" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/awdg.min.css">
+    <title>AWDG {% block title %}{% endblock %}</title>
+</head>
+<body>
+    <div id="wrap">
+        {% include "layouts/nav.html" %}
+        <div id="page">
+            <div class="{{ module }}">
+                <section  role="content">
+                    {% block main %}{% endblock %}
+                </section>
+                <aside role="sidebar">
+                    {% block sidebar %}{% endblock %}
+                </aside>
+            </div>
+        </div>
+    </div>
+    {% include "layouts/footer.html" %}
+<script type="text/javascript" src="/js/libs.min.js"></script>
+{% block js %}
+{% endblock %}
+</body>
+</html>

@@ -1,27 +1,73 @@
-// awdg
+/**
+ * AWDG
+ * Pedro
+ * version 0.0.1
+ */
 
-@import "libs";
-.events {
-    .list{
-        .list-item{
-            border: 1px solid red;
-        }
+@import "variables","libs";
+
+$footerheight: 100px;
+$container-border: 1px solid darken($brand-primary, .5);
+
+html,body {
+    height: 100%;
+}
+
+#wrap {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto (-$footerheight);
+    padding: 0 0 $footerheight;
+}
+
+nav {
+    #brand img {
+        margin:1em 3em 1em 0;
+        width:72px;
     }
 }
-.home{
-    .events-list{
-        // padding: 20px 10px;
-        background: #efefef;
-        .list-item{
-            padding:20px;
-            margin: 10px 20px;
-            border: 1px solid #ccc;
-            background-color:#fff;
+
+#page {
+    @extend .container;
+    padding-top:$navbar-height + 60px;
+    padding-bottom: 5em;
+    >div {
+        @include make_row();
+        section {
+            @include make-sm-column(8);
+        }
+        aside {
+            @include make-sm-column(4);
+       }
+   }
+}
+
+
+/**
+ * Footer
+ */
+
+footer {
+    background-color: $brand-primary;
+    border-top: $container-border;
+    color: #eee;
+    font-size: 13px;
+    height: $footerheight;
+    margin: 0;
+    padding: 1em 0;
+    text-align: center;
+    a {
+        color:#fff;
+        font-size: 1.25em;
+        &:hover {
+            color:#fff;
         }
     }
-}
-.narrow {
-    max-width: 330px;
-    padding: 15px;
-    margin: 0 auto;
+    .sub-navigation, .copyright {
+        @include make-row();
+    }
+    .notice {
+        @include make-md-column(12);
+        padding: 1.5em 0 0;
+    }
 }
