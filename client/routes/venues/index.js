@@ -15,18 +15,20 @@ var form = require('express-form');
 var field = form.field;
 
 module.exports = function(app, passport) {
+
     app.get('/venues', function(req, res, next) {
         res.render('venues/index', {
             module: 'venues'
         });
     });
+
     app.get('/admin/venues', function(req, res, next) {
         res.render('venues/index', {
             module: 'venues'
         });
     });
-    app.get('/admin/venues/create', function(req, res, next) {
 
+    app.get('/admin/venues/create', function(req, res, next) {
         res.render('venues/create', {
             module: 'venues'
         });
@@ -35,18 +37,15 @@ module.exports = function(app, passport) {
     app.post('/admin/venues/create', form(
         field("name").trim().required().is(/^[\w]+$/),
         field("url").trim().isUrl(),
-        field("street-address").trim().required().isAlphanumeric(),
-        field("extended-address"),
-        field("locality").trim().required().isAlphanumeric(),
-        field("region").trim().required().isAlphanumeric(),
-        field("postal-code").trim().required().isAlphanumeric(),
+        field("phone").trim(),
+        field("address").trim().required(),
         field("info")
     ), function(req, res, next) {
-        console.log(req.form);
-        // res.render('venues/create', {
-        //     module: 'locations'
-        // });
+        var venue = new Venue(req.form);
+        venue.save(function(err) {
+            if (err) return handleError(err);
+            res.redirect('/admin/venues');
+        });
     });
-
 
 }
