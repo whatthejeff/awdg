@@ -16,18 +16,18 @@ var cookieParser = require('cookie-parser');
 var session  = require('cookie-session');
 var bodyParser = require('body-parser');
 var swig = require('swig');
-var config = require('../config');
+// var config = require('../config');
 
 
-module.exports = function(app) {
+module.exports = function(app,config) {
 
     /**
      * Setup Passport
      */
-    require(config.root + '/config/passport')(passport);
-    app.use(session(config.session));
-    app.use(passport.initialize());
-    app.use(passport.session());
+    // require(config.root + '/config/passport')(passport);
+    // app.use(session(config.session));
+    // app.use(passport.initialize());
+    // app.use(passport.session());
 
     /**
      * Express Settings
@@ -60,9 +60,9 @@ module.exports = function(app) {
     /**
      * Client Routes
      */
-    require('./routes/home')(app, passport);
-    require('./routes/events')(app, passport);
-    require('./routes/members')(app, passport);
-    require('./routes/venues')(app, passport);
+    require('./routes/home')(app);
+    // require('./routes/events')(app, passport);
+    // require('./routes/members')(app, passport);
+    // require('./routes/venues')(app, passport);
 
 }

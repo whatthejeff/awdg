@@ -12,10 +12,11 @@ var path = require('path');
 var logger = require('morgan');
 var fs = require('fs');
 var util = require('util');
-var mongoose = require('mongoose');
-var passport = require('passport');
-var config = require('./config');
+// var mongoose = require('mongoose');
+// var passport = require('passport');
+var config = require('./lib/config');
 var app = express();
+
 
 /**
  * Set the logger
@@ -32,13 +33,13 @@ app.use(require('express-promise')());
  * Database
  * Load the mongoose instance
  */
-require(config.root + '/config/mongoose')(mongoose);
+// require(config.root + '/config/mongoose')(mongoose);
 
 /**
  * Client
  * Mount the client app
  */
-require(config.root + '/client')(app);
+require(config.root + '/client')(app,config);
 
 
 
