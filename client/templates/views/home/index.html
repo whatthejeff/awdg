@@ -1,0 +1,11 @@
+{% extends "layouts/two-column.html" %}
+{% block title %} Home {% endblock %}
+{% block main %}
+<div class="events-list">
+    <h2>Content</h2>
+    {% include "views/events/featured-item.html" %}
+</div>
+{% endblock %}
+{% block sidebar %}
+<h2>Sidebar</h2>
+{% endblock %}
