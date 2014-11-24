@@ -5,9 +5,12 @@
  *
  * @copyright Atlanta Web Design Group 2014
  *
+ * Core
+ * Mount global modules here
+ *
+ *
  */
 
-var _ = require('lodash');
 var path = require('path');
 var fs = require('fs');
 var dotenv = require('dotenv');
@@ -18,9 +21,9 @@ var dotenv = require('dotenv');
 dotenv.load();
 
 /**
- * This is where we setup
- * hosting options i.e ssl/ port numbers etc
- * database and service credentials
+ * This is where we setup the app environment and default options
+ * - ssl/ port numbers etc
+ * - database and service credentials
  */
 
 
@@ -30,13 +33,15 @@ var config = {
     name: pkg.name,
     env: process.env.NODE_ENV || 'development',
     port: process.env.PORT || 2934,
-    root: path.normalize(__dirname + '../../..'),
+    root: path.normalize(__dirname + '../..'),
     session: {
-        key: '_awdg',
+        name: '_awdg',
         secret: 'i<3th3W3b',
+        resave:false,
+        saveUninitialized:false
     },
     database: {
-        uri: process.env.DATABASE_URI ||  'mongodb://dev:lId-Jer-wa-H@ds053300.mongolab.com:53300/awdg',
+        uri: process.env.DATABASE_URI || 'mongodb://dev:lId-Jer-wa-H@ds053300.mongolab.com:53300/awdg',
         options: {
             replset: {
                 rs_name: process.env.DATABASE_REPLICA_SET
@@ -69,4 +74,17 @@ var config = {
     }
 }
 
-module.exports = config;
+
+
+/**
+ * Database
+ * Load the mongoose instance
+ */
+var db = require('./modules/mongoose')(config);
+
+var core ={
+    config:config,
+    db:db
+};
+
+module.exports = core;
