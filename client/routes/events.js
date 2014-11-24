@@ -30,24 +30,6 @@ module.exports = function(app, passport) {
         res.render('events/detail');
     });
 
-    app.get('/admin/events', function(req, res, next) {
-        res.render('events/admin', {
-            module: 'admin'
-        });
-    });
-
-    app.get('/admin/events/create', function(req, res, next) {
-        res.render('events/create', {
-            module: 'admin'
-        });
-    });
-
-    app.post('/admin/events/create', function(req, res, next) {
-        res.render('events/create', {
-            module: 'admin'
-        });
-    });
-
 
 
 }

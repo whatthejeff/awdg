@@ -27,7 +27,12 @@ nav {
     }
 }
 
-#page {
+.one-col {
+    @extend .container;
+    padding-top:$navbar-height + 60px;
+    padding-bottom: 5em;
+}
+.two-col {
     @extend .container;
     padding-top:$navbar-height + 60px;
     padding-bottom: 5em;

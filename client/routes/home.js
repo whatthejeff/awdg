@@ -8,8 +8,8 @@
  * Home Routes
  */
 
-// var mongoose = require('mongoose');
-// var Event = mongoose.model('Event');
+var mongoose = require('mongoose');
+var Event = mongoose.model('Event');
 
 module.exports = function(app) {
     app.get('/', function(req, res, next) {
