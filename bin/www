@@ -1,8 +1,9 @@
 #!/usr/bin/env node
+
+
 var debug = require('debug')('awdg');
 var app = require('../app');
-var core = require('../core');
 
-var server = app.listen(core.config.port, function() {
+var server = app.listen(process.env.PORT, function() {
   debug('Express server listening on port ' + server.address().port);
 });
