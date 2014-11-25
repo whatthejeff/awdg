@@ -4,7 +4,7 @@
   "private": true,
   "main": "app.js",
   "scripts": {
-    "start": "./node_modules/.bin/nodemon ./bin/www",
+    "start": "nodemon ./bin/www",
     "test": "mocha test"
   },
   "engines": {
@@ -38,7 +38,8 @@
     "serve-favicon": "^2.1.6",
     "string": "^2.2.0",
     "stripe": "^2.8.0",
-    "swig": "^1.4.2"
+    "swig": "^1.4.2",
+    "view-helpers": "^0.1.5"
   },
   "devDependencies": {
     "chai": "^1.9.2",

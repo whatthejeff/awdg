@@ -13,16 +13,16 @@
 var mongoose = require('mongoose');
 
 // load models
-require('../models/Event');
-require('../models/Member');
-require('../models/Attending');
-require('../models/Venue');
+awdg('core/models/event');
+awdg('core/models/member');
+awdg('core/models/attending');
+awdg('core/models/venue');
 
 
-module.exports = function(core) {
+module.exports = function(config) {
 
     /**
      * Connnect to Mongo and return the connection
      */
-    return  mongoose.connect(core.database.uri);
+    return  mongoose.connect(config.database.uri);
 };
