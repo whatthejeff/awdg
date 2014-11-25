@@ -2,19 +2,24 @@
 
 - Install [requirements](#requirements)
 - Clone the repo
-- Install dependancies
-- Run initial build
-- Start app
+- Install [dependencies](#dependencies)
+- Start app via `grunt` (if you need to work on the theme, also recomended) or `npm start`
      
         npm install
         bower install      
-        grunt develop
+        grunt develop #or npm start
  
  - head over to [http://localhost:2934](http://localhost:2934) 
+
+
+**all `npm start` does is run nodemon ;)
 
 ## Requirements 
 - Install [Nodejs](http://nodejs.org/)
 - Install Mongodb (optional) - You can get one up and running quickly over at [mongolab](https://mongolab.com/)
+
+## Dependencies
+You need nodemon, grunt and bower
 - Install nodemon, grunt and bower globally 
 
          npm install -g bower grunt nodemon
