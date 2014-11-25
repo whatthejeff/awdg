@@ -8,8 +8,7 @@
      
         npm install
         bower install      
-        grunt 
-        npm start
+        grunt develop
  
  
 ##  Personalize your dev environment
