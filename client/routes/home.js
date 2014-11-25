@@ -8,17 +8,16 @@
  * Home Routes
  */
 
+var express = require('express');
+var router = express.Router();
 var mongoose = require('mongoose');
 var Event = mongoose.model('Event');
+var Member = mongoose.model('Member');
 
-module.exports = function(app) {
-    app.get('/', function(req, res, next) {
-        // components
-        // featured event
-        // latest event
-        res.render('home/index', {
-            module: 'home'
-        });
+router.get('/', function(req, res, next) {
+    res.render('home/index', {
+        module: 'home'
     });
+})
 
-}
+module.exports = router;
