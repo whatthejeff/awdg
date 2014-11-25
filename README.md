@@ -12,7 +12,7 @@
  - head over to [http://localhost:2934](http://localhost:2934) 
 
 
-**all `npm start` does is run nodemon ;)
+**all `npm start` does is run nodemon :thumbsup:
 
 ## Requirements 
 - Install [Nodejs](http://nodejs.org/)
