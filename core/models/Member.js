@@ -58,7 +58,7 @@ var Member = new Schema({
             type: Boolean,
             default: false
         },
-        tags:Array
+        tags: Array
     }
 }, {
     collection: 'members'
@@ -87,35 +87,30 @@ Member.pre('save', function(next) {
 });
 
 /**
- * Methods
+ * Authenticate
+ *
+ * Compare paswords
+ * @param  {String}  password
+ * @param  {Function} cb
+ * @return {Boolean}
  */
-Member.methods = {
-    /**
-     * Authenticate
-     *
-     * Compare paswords
-     * @param  {String}  password
-     * @param  {Function} cb
-     * @return {Boolean}
-     */
-    authenticate: function(candidatePassword, cb) {
-        bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-            if (err) return cb(err);
-            cb(null, isMatch);
-        });
-    }
-};
+Member.methods.authenticate = function(candidatePassword, cb) {
+    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+        if (err) return cb(err);
+        cb(null, isMatch);
+    });
+}
 
 /**
  * Virtuals
  */
-Member.virtual('name.full').get(function () {
-  return this.name.first + ' ' + this.name.last;
+Member.virtual('name.full').get(function() {
+    return this.name.first + ' ' + this.name.last;
 });
 
 
-Member.virtual('url').get(function(){
-  return '/'+this.id;
+Member.virtual('url').get(function() {
+    return '/' + this.id;
 })
 
 /**
