@@ -10,7 +10,7 @@
         bower install      
         grunt develop
  
- - head over to http://localhost:2934 
+ - head over to [http://localhost:2934](http://localhost:2934) 
 
 ## Requirements 
 - Install [Nodejs](http://nodejs.org/)
