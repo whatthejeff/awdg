@@ -18,12 +18,24 @@ var auth = awdg('client/routes/middleware/auth');
 
 
 router.get('/account/profile', auth.requiresLogin, function(req, res, next) {
-
     res.render('members/account-profile',{
         module:'members',
         member:req.user
     });
 });
+router.get('/account/settings', auth.requiresLogin, function(req, res, next) {
+    res.render('members/account-settings',{
+        module:'members',
+        member:req.user
+    });
+});
+router.get('/account/subscription', auth.requiresLogin, function(req, res, next) {
+    res.render('members/account-subscription',{
+        module:'members',
+        member:req.user
+    });
+});
+
 
 router.get('/login', function(req, res, next) {
     res.render('members/login');
