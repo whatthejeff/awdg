@@ -10,19 +10,21 @@
 </head>
 <body>
     <div id="wrap">
-        {% include "layouts/nav.html" %}
+        {% include "views/common/nav.html" %}
         <div class="two-col">
             <div class="{{ module }}">
-                <section  role="content">
-                    {% block main %}{% endblock %}
-                </section>
-                <aside role="sidebar">
-                    {% block sidebar %}{% endblock %}
-                </aside>
-            </div>
+              <aside role="sidebar">
+                {% block sidebar %}
+                {% endblock %}
+            </aside>
+            <section  role="content">
+                {% block content %}
+                {% endblock %}
+            </section>
         </div>
     </div>
-    {% include "layouts/footer.html" %}
+</div>
+{% include "views/common/footer.html" %}
 <script type="text/javascript" src="/js/libs.min.js"></script>
 {% block js %}
 {% endblock %}

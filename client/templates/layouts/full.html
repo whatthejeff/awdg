@@ -10,16 +10,17 @@
 </head>
 <body>
     <div id="wrap">
-        {% include "layouts/nav.html" %}
+        {% include "views/common/nav.html" %}
         <div class="one-col">
             <div class="{{ module }}">
                 <section  role="content">
-                    {% block main %}{% endblock %}
+                    {% block content %}
+                    {% endblock %}
                 </section>
             </div>
         </div>
     </div>
-    {% include "layouts/footer.html" %}
+    {% include "views/common/footer.html" %}
 <script type="text/javascript" src="/js/libs.min.js"></script>
 {% block js %}
 {% endblock %}
