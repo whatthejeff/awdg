@@ -17,9 +17,9 @@ var Member = mongoose.model('Member');
 var auth = awdg('client/routes/middleware/auth');
 
 
-router.get('/account', auth.requiresLogin, function(req, res, next) {
+router.get('/account/profile', auth.requiresLogin, function(req, res, next) {
 
-    res.render('members/account',{
+    res.render('members/account-profile',{
         module:'members',
         member:req.user
     });
