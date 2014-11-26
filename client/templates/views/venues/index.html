@@ -1,6 +1,6 @@
-{% extends "layouts/two-column.html" %}
+{% extends "layouts/right-menu.html" %}
 {% block title %}Venue{% endblock %}
-{% block main %}
+{% block content %}
     <div class="venues-list">
         {% for venue in venues %}
             {% include "views/venues/list-item.html" %}

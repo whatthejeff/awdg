@@ -21,7 +21,7 @@ module.exports = function(grunt) {
                 files: {
                     '<%= dir.publish %>/js/libs.min.js': [
                         '<%= dir.vendor.bower %>/jquery/dist/jquery.min.js',
-                        '<%= dir.vendor.bower %>/bootstrap-sass/dist/js/bootstrap.min.js',
+                        '<%= dir.vendor.bower %>/bootstrap-sass-official/assets/javascripts/bootstrap.js',
                         '<%= dir.vendor.bower %>/lodash/dist/lodash.min.js'
                     ]
                 }

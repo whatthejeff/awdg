@@ -88,15 +88,6 @@ module.exports = function(app) {
     });
 
 
-    /**
-     * Error Handler
-     * This will print the stacktrace on development only
-     */
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        var error = (config.env == 'development') ? err : {};
-        res.render('error/' + err.status, error);
-    });
 
 
     /**
@@ -119,5 +110,16 @@ module.exports = function(app) {
         app.set('view cache', false);
     }
 
+    /**
+     * Error Handler
+     * This will print the stacktrace on development only
+     */
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        var error = (config.env == 'development') ? err : {};
+        console.log(error);
+        console.log(err);
+        res.render('common/error', error);
+    });
 
 }

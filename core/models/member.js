@@ -18,11 +18,9 @@ var Member = new Schema({
     name: {
         first: {
             type: String,
-            // required: true
         },
         last: {
             type: String,
-            // required: true
         }
     },
     email: {
@@ -38,10 +36,7 @@ var Member = new Schema({
         required: true,
     },
     profile: {
-        avatar: {
-            type: String,
-            default: ''
-        },
+        avatar: String,
         zip: {
             home: String,
             work: String
@@ -50,10 +45,10 @@ var Member = new Schema({
             type: Schema.Types.Mixed,
             default: {}
         },
-        bio: {
-            type: String,
-            default: ''
-        },
+        bio: String,
+        company:String,
+        title:String,
+        website:String,
         forHire: {
             type: Boolean,
             default: false
