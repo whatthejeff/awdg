@@ -35,22 +35,22 @@ main {
 
 // Tables
 
-.table>thead>tr>th, 
-.table>thead>tr>td, 
-.table>tbody>tr>th, 
-.table>tbody>tr>td, 
-.table>tfoot>tr>th, 
+.table>thead>tr>th,
+.table>thead>tr>td,
+.table>tbody>tr>th,
+.table>tbody>tr>td,
+.table>tfoot>tr>th,
 .table>tfoot>tr>td {
   padding: 10px 25px;
   border-top: 2px solid $table-border-color;
 }
 
 .table-bordered>thead:first-child>tr:first-child>th,
-.table-bordered>thead>tr>th, 
-.table-bordered>thead>tr>td, 
-.table-bordered>tbody>tr>th, 
-.table-bordered>tbody>tr>td, 
-.table-bordered>tfoot>tr>th, 
+.table-bordered>thead>tr>th,
+.table-bordered>thead>tr>td,
+.table-bordered>tbody>tr>th,
+.table-bordered>tbody>tr>td,
+.table-bordered>tfoot>tr>th,
 .table-bordered>tfoot>tr>td {
   border: 2px solid $table-border-color;
 }
